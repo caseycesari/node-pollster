@@ -44,7 +44,7 @@ Calculate the margin between Obama and Romney from a recent general election pol
 See the methodology used in recent polls about the Affordable Care Act
 
     pollster.polls({chart:'us-health-bill'}, function(resp){
-      console.log(resp.map(function(p) { return [p.pollster, p.method ]; }));
+      console.log(resp.map(function(p) { return [p.pollster, p.method]; }));
     });
 
 ## License
