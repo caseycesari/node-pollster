@@ -25,6 +25,6 @@ List charts about 2012 Senate races
 ## License
 See [LICENSE](https://github.com/caseypt/node-pollster/blob/master/LICENSE).
 
-The Huffington Post Pollster API is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US). See [this page](http://elections.huffingtonpost.com/pollster/api) for additional license and useage information.
+The Huffington Post Pollster API is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US). See [this page](http://elections.huffingtonpost.com/pollster/api) for additional license and useage information.
 
 Not affiliated with the Huffington Post.
