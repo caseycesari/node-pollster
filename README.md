@@ -4,7 +4,7 @@ A small Node.js wrapper for the [Huffington Post Pollster API](http://elections.
 
 ## Installation
 
-npm install pollster
+    npm install pollster
 
 ## Getting Started
 
