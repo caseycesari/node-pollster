@@ -12,26 +12,26 @@ npm install pollster
 
 See the current estimate of the president's job approval    
 
-    pollster.charts({topic: 'obama-job-approval'}, function(result){
-      console.log(result[0].estimates);
+    pollster.charts({topic: 'obama-job-approval'}, function(resp){
+      console.log(resp[0].estimates);
     });
 
 List charts about 2012 Senate races
 
-    pollster.charts({topic: '2012-senate'}, function(result){
-      console.log(result);
+    pollster.charts({topic: '2012-senate'}, function(resp){
+      console.log(resp);
     });
 
 List charts about Wisconsin
 
-    pollster.charts({state: 'WI'}, function(result){
-      console.log(result);
+    pollster.charts({state: 'WI'}, function(resp){
+      console.log(resp);
     });
 
 Calculate the margin between Obama and Romney from a recent general election poll
 
-    pollster.polls({chart: '2012-general-election-romney-vs-obama'}, function(result){
-      var poll = result[0],
+    pollster.polls({chart: '2012-general-election-romney-vs-obama'}, function(resp){
+      var poll = resp[0],
         responses = poll.questions.filter(function(q) {
           return q.chart === '2012-general-election-romney-vs-obama';
         })[0].subpopulations[0].responses,
@@ -39,6 +39,12 @@ Calculate the margin between Obama and Romney from a recent general election pol
         romney = responses.filter(function(r) { return r.choice === 'Romney'; })[0];
 
       console.log(obama.value - romney.value);
+    });
+
+See the methodology used in recent polls about the Affordable Care Act
+
+    pollster.polls({chart:'us-health-bill'}, function(resp){
+      console.log(resp.map(function(p) { return [p.pollster, p.method ]; }));
     });
 
 ## License
