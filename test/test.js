@@ -1,17 +1,18 @@
 var pollster = require('../lib/pollster');
+var assert = require('assert');
 
-pollster.charts({'state': 'PA'}, function(resp){
-  console.log(resp);
+pollster.chart('2012-general-election-romney-vs-obama', function(resp){
+  assert.equal(resp.state, 'US', 'General election chart test failed');
 });
 
-pollster.chart('2012-pennsylvania-gop-primary', function(resp){
-  console.log(resp);
+pollster.polls({}, function(resp) {
+  assert.equal(resp.length, 10, 'Poll page size test failed');
 });
 
-pollster.polls({'state': 'PA', 'topic': '2012-house'}, function(resp){
-  console.log(resp);
+pollster.chart('invalid-slug', function(resp) {
+  assert.ok(resp.errors, 'Invald slug test failed');
 });
 
-pollster.polls({chart:'us-health-bill'}, function(resp){
-  console.log(resp.map(function(p) { return [p.pollster, p.method ]; }));
+pollster.chart('2012-iowa-gop-primary', function(resp) {
+  assert.ok(Array.isArray(resp.estimates_by_date), 'Estimate by date test failed');
 });
