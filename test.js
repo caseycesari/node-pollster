@@ -1,4 +1,4 @@
-var pollster = require('../lib/pollster');
+var pollster = require('./pollster');
 var assert = require('assert');
 
 pollster.chart('2012-general-election-romney-vs-obama', function(resp){
