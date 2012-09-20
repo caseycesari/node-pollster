@@ -15,6 +15,6 @@
     "node": "0.8.x"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "node test.js"
   }
 }
