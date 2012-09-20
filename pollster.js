@@ -1,49 +1,46 @@
-exports.version = '0.0.2';
-
 var request = require('request');
 
-(function(pollster) {
+var API_SERVER = 'elections.huffingtonpost.com';
+var API_BASE = '/pollster/api';
 
-  var config = {
-    'API_SERVER' : 'elections.huffingtonpost.com',
-    'API_BASE': '/pollster/api'
-  };
+exports.version = '0.0.2';
 
-  _buildRequestUrl = function(path) {
-    var url = 'http://' + config.API_SERVER + config.API_BASE + '/' + path;
+// Gets lists of charts based on state and/or topic parameter
+// No parameters gets all charts
+exports.charts = function(params, callback) {
+  invoke('charts', params, function(resp){
+    callback(resp);
+  });
+};
 
-    return url;
-  };
+// Get single chart based on slug
+exports.chart = function(slug, callback) {
+  invoke('charts/' + slug, {}, function(resp){
+    callback(resp);
+  });
+};
 
-  _invoke = function(path, params, callback) {
-    var url = _buildRequestUrl(path);
+// Gets list of charts based on parameters
+// Polls are listed in pages of 10
+exports.polls = function(params, callback) {
+  invoke('polls', params, function(resp){
+    callback(resp);
+  });
+};
 
-    request(url, {qs: params}, function (error, response, body) {
-      callback(JSON.parse(body));
-    });
-  };
 
-  // Gets lists of charts based on state and/or topic parameter
-  // No parameters gets all charts
-  pollster.charts = function(params, callback) {
-    _invoke('charts', params, function(resp){
-      callback(resp);
-    });
-  };
+// Helper functions
 
-  // Get single chart based on slug
-  pollster.chart = function(slug, callback) {
-    _invoke('charts/' + slug, {}, function(resp){
-      callback(resp);
-    });
-  };
+function buildRequestUrl(path) {
+  var url = 'http://' + API_SERVER + API_BASE + '/' + path;
 
-  // Gets list of charts based on parameters
-  // Polls are listed in pages of 10
-  pollster.polls = function(params, callback) {
-    _invoke('polls', params, function(resp){
-      callback(resp);
-    });
-  };
+  return url;
+}
 
-}(typeof module == 'object' ? module.exports : window.pollster = {}));
+function invoke(path, params, callback) {
+  var url = buildRequestUrl(path);
+
+  request(url, {qs: params}, function (error, response, body) {
+    callback(JSON.parse(body));
+  });
+}
