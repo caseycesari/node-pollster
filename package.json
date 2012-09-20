@@ -2,7 +2,7 @@
   "name": "pollster",
   "description": "A thin wrapper for the Huffington Post Pollster API",
   "author": "Casey Thomas <c@cpt.ph>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./pollster",
   "repository": {
     "type": "git",

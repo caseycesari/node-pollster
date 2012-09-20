@@ -3,7 +3,7 @@ var request = require('request');
 var API_SERVER = 'elections.huffingtonpost.com';
 var API_BASE = '/pollster/api';
 
-exports.version = '0.0.2';
+exports.version = '0.0.3';
 
 // Gets lists of charts based on state and/or topic parameter
 // No parameters gets all charts
